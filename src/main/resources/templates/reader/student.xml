@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<workbook>
+    <worksheet name="Sheet1">
+        <!--loop（循环）元素定义Excel循环块,该元素包括
+        startRow和endRow指定循环开始行,循环结束行
+        itmes 映射集合
+        var 映射的bean
+        varType 类的路径
+        -->
+        <section startRow="0" endRow="0"></section>
+        <loop startRow = "1" endRow = "2" items = "studentList" var = "student" varType = "com.wuhao.entity.Student">
+            <!--loop元素可以包含任意数量的内部section和loop元素
+            并且必须包含loopbreakcondition元素的定义,该元素里标示中断循环的条件;
+            -->
+            <!--循环开始行-->
+            <section startRow="1" endRow="1">
+                <!--循环中每一次节点属性配置-->
+                <mapping row="1" col="0">student.name</mapping>
+                <mapping row="1" col="1">student.password</mapping>
+                <mapping row="1" col="2">student.sex</mapping>
+                <mapping row="1" col="3">student.age</mapping>
+                <mapping row="1" col="4">student.birthday</mapping>
+            </section>
+            <!--循环结束配置-->
+            <loopbreakcondition>
+                <rowcheck offset = "0">
+                    <!--cellcheck中不写内容,则默认空白时停止循环-->
+                    <cellcheck offset = "0"></cellcheck>
+                </rowcheck>
+            </loopbreakcondition>
+        </loop>
+    </worksheet>
+</workbook>
