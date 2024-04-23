@@ -32,6 +32,8 @@ public class JxlsReaderTest {
                     Map<String, Object> beans = new HashMap<>();
                     beans.put("employeeList", employeeList);
                     XLSReadStatus read = reader.read(xlsInputStream, beans);
+                    boolean success = read.isStatusOK();
+                    System.out.println("status OK: %s".formatted(read.isStatusOK()));
                     System.out.println(employeeList);
                 }
             }

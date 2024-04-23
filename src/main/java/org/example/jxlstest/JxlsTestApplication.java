@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 @SpringBootApplication
 public class JxlsTestApplication {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         SpringApplication.run(JxlsTestApplication.class, args);
 
     }
