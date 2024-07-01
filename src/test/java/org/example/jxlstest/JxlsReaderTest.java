@@ -33,7 +33,7 @@ public class JxlsReaderTest {
                     beans.put("employeeList", employeeList);
                     XLSReadStatus read = reader.read(xlsInputStream, beans);
                     boolean success = read.isStatusOK();
-                    System.out.println("status OK: %s".formatted(read.isStatusOK()));
+                    System.out.println("status OK: %s".formatted(success));
                     System.out.println(employeeList);
                 }
             }

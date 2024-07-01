@@ -20,12 +20,18 @@ import java.util.Map;
 
 @SpringBootTest
 @Slf4j
-class JxlsWritterTests {
+class JxlsWriterTests {
 
     @Test
     void contextLoads() {
     }
 
+    /**
+    * @Author : Ocean
+    * @createTime : 2024/6/28 15:46
+    * @Description ：
+     * excel 中 开始 -> 条件格式 -> 突出显示单元格规则 中可以设置 条件上色等简单规则。
+    */
     @Test
     public void test() throws IOException {
         Employee employee = new Employee();
@@ -35,7 +41,7 @@ class JxlsWritterTests {
 
         Employee employee2 = new Employee();
         employee2.setName("xx");
-        employee2.setPayment(BigDecimal.valueOf(34434));
+        employee2.setPayment(BigDecimal.valueOf(66666));
         employee2.setBirthDate(new Date());
 
         Map<String, Object> data = new HashMap<>();
@@ -45,12 +51,12 @@ class JxlsWritterTests {
         File file = new File("C:\\Users\\Administrator\\Documents\\github-code\\jxlsTest\\jxlsTest\\src\\main\\resources\\static\\report.xlsx");
 //        String exportPath = "C:\\Users\\Administrator\\Documents\\github-code\\jxlsTest\\jxlsTest\\src\\main\\resources\\templates\\report.xlsx";
 //        OutputStream out = new FileOutputStream(exportPath);
-        Logger log = LoggerFactory.getLogger(JxlsWritterTests.class);
+        Logger log = LoggerFactory.getLogger(JxlsWriterTests.class);
         JxlsOutputFile jxlsOutputFile = new JxlsOutputFile(file);
-        // 开启 stream 使用 POI SXSSF 处理大数据量，这需要的内存明显减少，处理速度更快，
+        // 开启 stream 使用 POI SXSSF 处理大数据量，一条一条的存储在硬盘上，而不是一次性存储到硬盘上，这需要的内存明显减少，处理速度更快，
         // 并非所有功能都可以在流式处理模式下使用。简而言之，流式处理只能用于大型简单数据列表。
         JxlsPoiTemplateFillerBuilder.newInstance()
-                .withTemplate(new ClassPathResource("/templates/writter/test.xlsx").getInputStream())
+                .withTemplate(new ClassPathResource("/templates/writer/test.xlsx").getInputStream())
                 .withLogger(new Slf4jJxlsLogger(log))
                 .withStreaming(JxlsStreaming.STREAMING_OFF)
                 .build()
